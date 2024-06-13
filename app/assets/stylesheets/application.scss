@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*
+.logo {
+  width: 100px;
+  height: 100px;
+}
+ */
+ 
+ .img1{
+   height: 200px;
+   background: url("<%= asset_path('buncyo.jpg') %>")) no-repeat;
+   background-size: contain;
+ }
+ 
+  /*
+.img1 {background: url(buncyo.jpg)  no-repeat bottom left / contain;}
+*/

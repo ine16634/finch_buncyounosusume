@@ -2,32 +2,104 @@
 <html>
   <head>
     <title>Finch</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <script src="https://kit.fontawesome.com/e2c9f13b1d.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+    
+    <style>
+  header {
+  background-image: url("<%= asset_path('buncyo.jpg') %>");
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  background-size: cover;
+   }
+  </style>
 
-  <body>
-    <header>
-      <% if user_signed_in? %>
-      <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>
-      </li>
-      <% else %>
-      <li>
-      <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-      <%= link_to "ログイン", new_user_session_path %>
-      </li>
-       <% end %>
+
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid my-5 img1">
+          <a class="navbar-brand p-3" href="/"><%= image_tag 'logo6.png', class:'logo'%></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-white' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+    
+    <header2 class="shadow-sm">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Q＆Aを探す" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          <div class="justify-content">
+           <ul class="navbar-nav">
+            <div class="d-flex">
+              <div class="p-2"> 
+               <a class="nav-item nav-link active" aria-current="page" href="#">Q&A一覧</a>
+              </div>
+              <div class="p-2">
+               <a class="nav-item nav-link disabled" aria-current="page" href="#">カテゴリ一覧</a>
+              </div>
+              <div class="p-2">
+               <a class="nav-item nav-link disabled" aria-current="page" href="#">SNS投稿一覧</a>
+              </div>
+            </div>
+           </ul>
+          </div>
+           <form>
+            <button class="btn btn-outline-success me-2" type="button">質問・相談　</button>
+           </form>
+          </div>
+         </nav>
+        </div>
+    </header2>
+    
     <%= yield %>
+    
+    <footer class="bg-dark text-white pt-3 pb-3">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-6">
+            <p>文鳥をより知っていけるコミュニティサイト</p>
+            <%= image_tag('logo4.png') %>
+          </div>
+          <div class="col-md-8">
+          </div>
+        </div>
+      </div>
+    </footer>
+  
   </body>
+  
 </html>

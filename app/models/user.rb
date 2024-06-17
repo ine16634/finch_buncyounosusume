@@ -8,6 +8,8 @@ class User < ApplicationRecord
          
   has_one_attached :image_icon
   
+  has_many :questions, dependent: :destroy
+  
   def get_image_icon(width, height)
     unless image_icon.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jp')

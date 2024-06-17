@@ -78,7 +78,9 @@
            </ul>
           </div>
            <form>
-            <button class="btn btn-outline-success me-2" type="button">質問・相談　</button>
+           <%= link_to new_question_path,class:"nav-link text-light" do %>
+           <button class="btn btn-outline-success me-2" type="button">質問・相談　</button>
+            <% end %>
            </form>
           </div>
          </nav>

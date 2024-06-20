@@ -4,10 +4,27 @@
     
 
     
-       <h1>SHOW</h1>
-
+   <h1>SHOW</h1>
+   <table class="table">
    
-    
+    <tbody>
+          <tr>
+           <td><%= link_to user_path(@question.user.id) do %>
+                <!-- <　%= image_tag @question.user.get_profile_image(100,100) %><br> -->
+                <%= @question.user.name %>
+               <% end %></td>
+          </tr>
+          <tr>
+           <td><!--<　%= link_to question_path(@question.id) do %>　-->
+                <%= @question.question_content %>
+               <!-- <　% end %>--></td>
+              <% if @question.user == current_user %>
+           </tr>
+            <tr><td><%= link_to "Destroy", question_path(@question.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              <% end %></td>
+         　　</tr>
+       </tbody>
+     </table>
     
     
     </div>

@@ -2,27 +2,16 @@
  <div class="row">
   <div class="col-md-8">
     
-       <h1></h1>
+       <h1>Q&A一覧</h1>
 
    
      <table class="table table-hover table-inverse">
-       <thead>
-         <tr>
-           <th colspan="1"></th>
-           <th>Title</th>
-           <th>Opinion</th>
 
-         </tr>
-       </thead>
  
        <tbody>
-       <% @questions.each do |book| %>
+       <% @questions.each do |question| %>
          <tr>
-            <td><%= link_to user_path(book.user.id) do %>
-              <%= image_tag book.user.get_profile_image(100,100) %>
-              <% end %></td>
-            <td><%=link_to book.title, book_path(book.id) %></td>
-            <td><%= book.body %></td>
+            <td><%=link_to question.question_content, question_path(question.id) %></td>
          </tr>
        <% end %>
        </tbody>

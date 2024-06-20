@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def new
-    @question = Question.new 
+    @question = Question.new
   end
 
   #def confirm
@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
      # render :new
     #end
   #end
-  
+
    def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
@@ -21,12 +21,20 @@ class QuestionsController < ApplicationController
     end
    end
 
+  def destroy
+    question = Question.find(params[:id])
+    question.destroy
+    redirect_to '/questions'
+  end
+
+
+
   def index
     @questions = Question.all
   end
 
   def show
-    @question = Question.find(question_params)
+    @question = Question.find(params[:id])
   end
 
 private

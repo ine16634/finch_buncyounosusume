@@ -17,9 +17,16 @@
           <tr>
            <td><!--<　%= link_to question_path(@question.id) do %>　-->
                 <%= @question.question_content %>
-               <!-- <　% end %>--></td>
+               <!-- <　% end %>--></td> </tr>
+               <tr>
+              <td>
+              <%= image_tag @question.get_image %>
+              </tr>
+              <tr><td>
+               <!--< %= @questions.created_at.strftime('%Y/%m/%d') %> --></td>
+              </tr>
+               
               <% if @question.user == current_user %>
-           </tr>
             <tr><td><%= link_to "Destroy", question_path(@question.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
               <% end %></td>
          　　</tr>

@@ -2,7 +2,7 @@ class Question < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   
- #validates :question, presence: true
+ validates :question_content, presence: true
  
   def get_image
     unless image.attached?

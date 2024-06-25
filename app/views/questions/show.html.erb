@@ -23,7 +23,7 @@
               <%= image_tag @question.get_image %>
               </tr>
               <tr><td>
-               <!--< %= @questions.created_at.strftime('%Y/%m/%d') %> --></td>
+               <%= @question.created_at.strftime('%Y/%m/%d') %></td>
               </tr>
                
               <% if @question.user == current_user %>

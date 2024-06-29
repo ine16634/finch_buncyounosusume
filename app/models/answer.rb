@@ -1,11 +1,12 @@
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
   has_one_attached :image
   
-  has_many :answers, dependent: :destroy
   belongs_to :user
+  belongs_to :question
   
- validates :question_content, presence: true
- 
+  validates :answer_content, presence: true
+  
+  
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -14,3 +15,4 @@ class Question < ApplicationRecord
     image
   end
 end
+

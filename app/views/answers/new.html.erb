@@ -4,11 +4,13 @@
 
 <h2 class="mt-3">回答投稿</h2>
 
-<p>＝ここに質問内容＝ <!-- < %= @answer.question.question_content %> --></p>
+<p>＝ここに質問内容＝</p>
+<!-- -->
+<p><%= @question.question_content %></p> 
 
 <%= form_with(model: [@question, @answer], local: true) do |f| %>
   <div class="form-group">
-  <label>質問文</label>
+  <label>回答文</label>
   <%= f.text_area :answer_content, class:"form-control book_body"%>
  </div>  
  <div class="form-group">

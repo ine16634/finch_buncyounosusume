@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
    def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
-    if @question.save
+    if @question.save 
     #  flash[:notice] = "You have created book successfully."
       redirect_to @question
     else
@@ -35,6 +35,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    
   end
 
 private

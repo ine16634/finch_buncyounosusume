@@ -1,8 +1,8 @@
 class AnswersController < ApplicationController
   def new
-    @answer.question_id = params[:question_id]
-    @question = Question.find(params[:id])
     @answer = Answer.new
+    @answer.question_id = params[:question_id]
+    @question = Question.find(params[:question_id])
   end
 
   def create
@@ -21,6 +21,6 @@ class AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:body)
+      params.require(:answer).permit(:answer_content,:image)
     end
 end

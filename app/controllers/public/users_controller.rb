@@ -19,6 +19,30 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  #enum is_valid: { '有効': true, '退会済': false }
+
+  def active_for_authentication?
+    super && self.is_valid == true
+  end
+  
+  def check
+    @user = User.find(params[:id])
+    #ユーザーの情報を見つける
+  end
+  
+  def withdrawl
+    @user = User.find(current_user.id)
+    #現在ログインしているユーザーを@userに格納
+    @user.update(is_valid: false )
+    #updateで登録情報を「退会済」に変更
+    reset_session
+    #sessionIDのresetを行う
+    redirect_to root_path
+    #指定されたrootへのpath
+  end
+ 
+ 
+ 
 
 
 
@@ -30,7 +54,7 @@ private
 
 
   def user_params
-    params.require(:user).permit(:name, :image_icon,:introduction)
+    params.require(:user).permit(:name, :image_icon, :introduction, :valid)
   end
 
 end

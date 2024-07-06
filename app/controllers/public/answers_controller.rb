@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class Public::AnswersController < ApplicationController
   def new
     @answer = Answer.new
     @answer.question_id = params[:question_id]

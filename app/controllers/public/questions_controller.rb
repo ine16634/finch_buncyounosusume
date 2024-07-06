@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Public::QuestionsController < ApplicationController
   def new
     @question = Question.new
   end

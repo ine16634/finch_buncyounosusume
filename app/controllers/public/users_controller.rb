@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
   #enum is_valid: { '有効': true, '退会済': false }
 
   def active_for_authentication?
-    super && self.is_valid == true
+    super && (self.is_valid === true)
   end
   
   def check

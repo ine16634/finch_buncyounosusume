@@ -18,10 +18,11 @@
     </tr>
     </tbody></table>
 </div>
-<div class="row">
+<div class="col-sm-12 col-md-8 col-lg-7 px-5 px-sm-0 mx-auto">
     <%= link_to  edit_user_path,class:"btn btn-outline-secondary btn-block" do %>
     <i class="fa-solid fa-user-gear"></i>
     <% end %>
+    <%= link_to "退会する", withdrawl_user_path(@user.id), method: :patch, data: { confirm: '本当に削除しますか？' }  %>
 </div>
 
     </div>

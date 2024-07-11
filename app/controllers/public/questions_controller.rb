@@ -40,6 +40,6 @@ class Public::QuestionsController < ApplicationController
 
 private
     def question_params
-      params.require(:question).permit(:question_content,:image)
+      params.require(:question).permit(:question_content,:image,:category_id)
     end
 end

@@ -4,6 +4,8 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :user
   
+  has_many :categories, dependent: :destroy
+  
  validates :question_content, presence: true
  
   def get_image

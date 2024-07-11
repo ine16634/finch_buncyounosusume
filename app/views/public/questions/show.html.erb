@@ -24,9 +24,13 @@
               </tr>
                
               <% if @question.user == current_user %>
-            <tr><td><%= link_to "Destroy", question_path(@question.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            <tr><td>
+              <%= link_to question_path(@question.id), method: :delete, data: {confirm: "削除しますか？"}  do %>
+              <i class="fa-solid fa-trash-can"></i>
               <% end %></td>
-         　　</tr>
+              </tr>
+              <% end %>
+
        </tbody>
      </table>
      
@@ -47,7 +51,13 @@
           <tr>
            <td><%= answer.answer_content %></td>
           </tr>
-               <% end %>
+           <% if answer.user == current_user %>
+         <tr><td>
+             <%= link_to question_path(answer.question.id), method: :delete, data: {confirm: "削除しますか"}  do %>
+         <i class="fa-solid fa-trash-can"></i>
+             <% end %></td></tr>
+            <% end %>
+           <% end %>
        </tbody>
      </table>
     

@@ -75,3 +75,5 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
 end
+
+gem 'kaminari','~> 1.2.1'

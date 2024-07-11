@@ -30,7 +30,7 @@ class Public::QuestionsController < ApplicationController
 
 
   def index
-    @questions = Question.all
+    @questions = Question.order("created_at DESC").page(params[:page])
   end
 
   def show

@@ -52,7 +52,7 @@
        <tbody>
        <% @answers.each do |answer| %>
          <tr>
-            <td><%=link_to answer.answer_content, question_path(answer.id) %>
+            <td><%=link_to answer.answer_content, question_path(answer.question.id) %>
             <%= answer.created_at.strftime('%Y/%m/%d') %></td>
          </tr>
 

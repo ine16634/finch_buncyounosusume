@@ -4,7 +4,7 @@
    <div class="border px-3 my-3 bg-light text-dark text-center">
     <h3 class="p-2"> <span>新着</span>　回答募集</h3>
     </div>
-    <p>～以下、テーブルで新着質問5件ぐらい表示予定～</p>
+   
       <table class="table table-hover table-inverse">
 
  
@@ -18,7 +18,7 @@
        <% end %>
        </tbody>
      </table>
-
+      <!--< %= paginate @questions %> -->
 </div>
 <div class="col-md-3 offset-md-1 shadow-sm">
   <section class="title_area">
@@ -28,7 +28,7 @@
   <section>
       <h4>はじめに</h4>
        <div class="text_area">
-         <p>●　質問をするには利用登録が必要です。登録の際は<%= link_to "こちら", new_user_registration_path,class: "text_link" %>をご覧ください。（ウェブブラウザー上での質問の閲覧は登録不要です）</p>
+         <p>●　質問をするには利用登録が必要です。登録の際は<%= link_to "こちら", new_user_registration_path ,class: "text_link" %>をご覧ください。（ウェブブラウザー上での質問の閲覧は登録不要です）</p>
          <p>●　ご利用いただく際には<%= link_to "/home/about",class:"text_link" do %>サイトのご利用について<% end %>」「<%= link_to "/home/rule",class:"text_link" do %>利用方法<% end %>」もご一読ください。</p>
     <!-- <p class="text_deco">その他ご不明な点については、<a href="#" class="text_link">ヘルプページ</a>もあわせてご確認ください。</p> -->
           </div>

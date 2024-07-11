@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
   
   def top
-    @questions = Question.all
+    @questions = Question.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def about

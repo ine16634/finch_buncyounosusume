@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy] 
-    resources :users do
+    resources :users, only: [:destroy] do
         member do
             get "check"
             #ユーザーの会員状況を取得
@@ -29,8 +28,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-    resources :users, only: [:show, :edit, :update]
-    resources :users do
+    resources :users, only: [:show, :edit, :update] do
         member do
             get "check"
             #ユーザーの会員状況を取得

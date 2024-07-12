@@ -1,7 +1,8 @@
 <div class="row">
   <div class=".col-xs-3"></div>
   <div class=".col-xs-6">
-     <% form_with model: @category, local: true do |f| %>
+     
+     <%= form_with url: admin_categories_path ,method: :post,model: @category, local: true do |f| %>
     <li>
       <%= f.label :name, 'カテゴリー名' %>
       <br>

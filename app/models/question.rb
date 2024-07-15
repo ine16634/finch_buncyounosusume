@@ -4,7 +4,7 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :user
   
-  has_many :categories, dependent: :destroy
+  #belongs_to :category
   
  validates :question_content, presence: true
  

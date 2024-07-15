@@ -29,8 +29,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+#en:
+  #hello: "Hello world"
 
 ja:
   enums:
@@ -42,6 +42,15 @@ ja:
       illness: "病気・ケガ"
       others: "その他"
       
+ja:
+  enums:
+    question:
+      before: "お迎え前"
+      reeding: "飼育方法"
+      knowledge: "知識"
+      food: "食・健康"
+      illness: "病気・ケガ"
+      others: "その他"
   activerecord:
     errors:
       messages:
@@ -49,8 +58,7 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-　  date:
+  date:
     abbr_day_names:
     - 日
     - 月
@@ -224,4 +232,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-  

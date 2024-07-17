@@ -19,3 +19,6 @@ class Question < ApplicationRecord
   enum category_method: { before: 0, breeding: 1, knowledge: 2, food: 3, illness: 4, others: 5 }
   
 end
+
+
+# メモ：rails g model QuestionComment comment:text user_id:integer question_id:integer

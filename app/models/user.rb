@@ -10,6 +10,7 @@ class User < ApplicationRecord
   
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :answer_comments, dependent: :destroy
   
   def get_image_icon(width, height)
     unless image_icon.attached?

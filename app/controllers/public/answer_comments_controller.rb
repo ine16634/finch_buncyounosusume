@@ -4,7 +4,7 @@ class Public::AnswerCommentsController < ApplicationController
     comment = current_user.answer_comments.new(answer_comment_params)
     comment.answer_id = answer.id
     comment.save
-    redirect_to panswer_path(answer)
+    redirect_to answer_path(answer)
   end
 
   private

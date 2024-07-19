@@ -3,7 +3,7 @@
   <div class="col-md-8">
 
    <table class="table">
-   
+
     <tbody>
           <tr>
            <td><%= link_to user_path(@question.user.id) do %>
@@ -22,7 +22,7 @@
               <tr><td>
                <%= @question.created_at.strftime('%Y/%m/%d') %></td>
               </tr>
-               
+
               <% if @question.user == current_user %>
             <tr><td>
               <%= link_to question_path(@question.id), method: :delete, data: {confirm: "削除しますか？"}  do %>
@@ -33,44 +33,38 @@
 
        </tbody>
      </table>
-     
+
      <div class="row">
     <%= link_to  new_question_answer_path(@question.id),class:"btn btn-outline-secondary btn-block" do %>
     <!-- <i class="fa-solid fa-user-gear"></i>-->
     回答
     <% end %>
     </div>
-     
-    
-     <table class="table">
-      <tbody>
+
             <% @question.answers.each do |answer| %>
-              <tr><td>
-              <%= answer.user.name %></td></tr>
-               <tr><td>
-              <%= answer.answer_content %></td></tr>
-            <% if answer.user == current_user %>
-               <tr><td>
-              <%= link_to question_path(answer.question.id), method: :delete, data: {confirm: "削除しますか"}  do %>
-               <i class="fa-solid fa-trash-can"></i>
-              <% end %></td></tr>
-              <% end %>
-            <% if @question.user == current_user %>
-               <%= form_with model: [answer, AnswerComment.new] do |f| %>
-                 <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-                 <%= f.submit "送信する" %>
-               <% end %>
-              <% end %>
-            <% @answer.answer_comments.each do |answer_comment| %>
+              <%= answer.user.name %>
+              <%= answer.answer_content %>
+            　　　<% if answer.user == current_user %>
+              　　　　<%= link_to question_path(answer.question.id), method: :delete, data: {confirm: "削除しますか"}  do %>
+               　　　　<i class="fa-solid fa-trash-can"></i>
+              　　　　<% end %>
+             　　 <% end %>
+            　　　<% if @question.user == current_user %>
+               　　　<%= form_with url:question_answer_answer_comments_path, method: :post, model: [answer, AnswerComment.new] do |f| %>
+               　　　　　<%#= form_with model: answer.answer_comments.new do |f| %>
+                 　　　<%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
+                 　　　<%= f.submit "送信する" %>
+               　　　　　<% end %>
+              　<% end %>
+              
+            <% answer.answer_comments.each do |answer_comment| %>
                <%= answer_comment.user.name %>
                <%= answer_comment.created_at.strftime('%Y/%m/%d') %>
                <%= answer_comment.comment %>
-            <% end %>
-           <% end %>
-       </tbody>
-     </table>
+            　<% end %>
+          <% end %>
     
-    
+
     </div>
   </div>
 </div>

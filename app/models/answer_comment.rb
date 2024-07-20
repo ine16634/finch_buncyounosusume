@@ -1,4 +1,4 @@
 class AnswerComment < ApplicationRecord
   belongs_to :user
-  belongs_to :post_image
+  belongs_to :answer
 end

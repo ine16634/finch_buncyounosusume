@@ -39,23 +39,23 @@
     <!-- <i class="fa-solid fa-user-gear"></i>-->
     回答
     <% end %>
-    </div>
-
+    </div> 
+  
             <% @question.answers.each do |answer| %>
-              <%= answer.user.name %>
-              <%= answer.answer_content %>
-            　　　<% if answer.user == current_user %>
-              　　　　<%= link_to question_path(answer.question.id), method: :delete, data: {confirm: "削除しますか"}  do %>
-               　　　　<i class="fa-solid fa-trash-can"></i>
-              　　　　<% end %>
+               <%= answer.user.name %>
+               <%= answer.answer_content %>
+            　   <% if answer.user == current_user %>
+                 <%= link_to question_path(answer.question.id), method: :delete, data: {confirm: "削除しますか"}  do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
              　　 <% end %>
-            　　　<% if @question.user == current_user %>
-               　　　<%= form_with url:question_answer_answer_comments_path, method: :post, model: [answer, AnswerComment.new] do |f| %>
-               　　　　　<%#= form_with model: answer.answer_comments.new do |f| %>
-                 　　　<%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
-                 　　　<%= f.submit "送信する" %>
-               　　　　　<% end %>
-              　<% end %>
+            　  　 <% if @question.user == current_user %>
+                  <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
+                  <%#= form_with model: answer.answer_comments.new do |f| %>
+                 <%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
+                 　   <%= f.submit "送信する" %>
+               <% end %>
+              <% end %>
               
             <% answer.answer_comments.each do |answer_comment| %>
                <%= answer_comment.user.name %>

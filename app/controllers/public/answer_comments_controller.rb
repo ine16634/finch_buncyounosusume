@@ -1,10 +1,12 @@
 class Public::AnswerCommentsController < ApplicationController
+  
   def create
-    answer = Answer.find(params[:Answer_id])
-    comment = current_user.answer_comments.new(answer_comment_params)
+    answer = Answer.find(params[:answer_id])
+    comment = AnswerComment.new(answer_comment_params)
+    comment.user_id = current_user.id
     comment.answer_id = answer.id
     comment.save
-    redirect_to answer_path(answer)
+    redirect_to question_path(params[:question_id])
   end
 
   private

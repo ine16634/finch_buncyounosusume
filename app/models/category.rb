@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-   belongs_to :question
+   has_many :questions, dependent: :destroy
 
 
 end

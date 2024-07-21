@@ -3,6 +3,7 @@ class Answer < ApplicationRecord
   
   belongs_to :user
   belongs_to :question
+  has_many :answer_comments, dependent: :destroy
   
   validates :answer_content, presence: true
   
@@ -16,3 +17,4 @@ class Answer < ApplicationRecord
   end
 end
 
+#メモ：rails g model AnswerComment comment:text user_id:integer answer_id:integer

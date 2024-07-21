@@ -35,11 +35,11 @@ class Public::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    
+  
   end
 
 private
     def question_params
-      params.require(:question).permit(:question_content,:image,:category_id)
+      params.require(:question).permit(:question_content,:image,:category_method)
     end
 end

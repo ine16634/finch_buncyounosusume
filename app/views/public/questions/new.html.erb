@@ -14,10 +14,21 @@
   <%= f.file_field :image, placeholder: "画像", accept: "image/*",class:"book_body"%>
  </div>
  <div>
-  
-  
-  
-  
+  <label>質問カテゴリー</label><br />
+  <div class="mt-3 mx-3">
+   <%= f.radio_button :category_method, "before" %>
+   <%= f.label :category_method_before, "お迎え前" %><br />
+   <%= f.radio_button :category_method, "breeding" %>
+   <%= f.label :category_method_breeding, "飼育方法" %><br /> 
+   <%= f.radio_button :category_method, "knowledge" %>
+   <%= f.label :category_method_knowledge, "知識" %><br />
+   <%= f.radio_button :category_method, "food" %>
+   <%= f.label :category_method_food, "食・健康" %><br /> 
+   <%= f.radio_button :category_method, "illness" %>
+   <%= f.label :category_method_illness, "病気・ケガ" %><br /> 
+   <%= f.radio_button :category_method, "others" %>
+   <%= f.label :category_method_others, "その他" %> <br /> 
+  </div>
  </div>
  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <%= f.submit '投稿',class:"btn btn-success me-md-2" %>

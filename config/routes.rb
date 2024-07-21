@@ -40,8 +40,11 @@ Rails.application.routes.draw do
 
     #resources :image_icons, only: [:new, :index, :show, :destroy]
     resources :questions do
-      resources :answers, only: [:new,:create]
+      resources :answers, only: [:new, :create, :destroy] do
+        resources :answer_comments, only: [:create, :destroy]
+       end
     end
+    #resources :answer_comments, only: [:create, :destroy]
   # collection do
     #  post :confirm
    # end

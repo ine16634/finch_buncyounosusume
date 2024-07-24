@@ -1,5 +1,5 @@
 class Public::AnswerCommentsController < ApplicationController
-  
+
   def create
     answer = Answer.find(params[:answer_id])
     comment = AnswerComment.new(answer_comment_params)
@@ -14,5 +14,5 @@ class Public::AnswerCommentsController < ApplicationController
   def answer_comment_params
     params.require(:answer_comment).permit(:comment)
   end
-  
+
 end

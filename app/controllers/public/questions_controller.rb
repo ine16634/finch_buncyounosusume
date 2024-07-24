@@ -38,6 +38,12 @@ class Public::QuestionsController < ApplicationController
   
   end
 
+def self.category
+  Question.where(category_method: @category )
+end
+
+
+
 private
     def question_params
       params.require(:question).permit(:question_content,:image,:category_method)

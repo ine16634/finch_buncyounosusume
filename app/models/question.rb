@@ -18,6 +18,26 @@ class Question < ApplicationRecord
   
   enum category_method: { before: 0, breeding: 1, knowledge: 2, food: 3, illness: 4, others: 5 }
   
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @question = Question.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @question = Question.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @question = Question.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @question = Question.where("title LIKE?","%#{word}%")
+    else
+      @question = Question.all
+    end
+  end
+
+  
+  
+  
+  
+  
 end
 
 

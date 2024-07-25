@@ -63,7 +63,7 @@
             <%= f.text_field :word , class:"form-control me-2" ,placeholder:"Q＆Aを探す" %>
             <%= f.select :range, options_for_select([['Question'], ['User']]) ,class:"form-control me-2" %>
             <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-            <%= f.submit "検索", class: "btn btn-outline-success"  %>
+            <%= f.submit "検索", class: "btn btn-outline-success" %>
             <% end %>
            </div>
           <div class="justify-content">

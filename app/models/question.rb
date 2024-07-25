@@ -21,13 +21,13 @@ class Question < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @question = Question.where("title LIKE?","#{word}")
+      @question = Question.where("question_content LIKE?","#{word}")
     elsif search == "forward_match"
-      @question = Question.where("title LIKE?","#{word}%")
+      @question = Question.where("question_content LIKE?","#{word}%")
     elsif search == "backward_match"
-      @question = Question.where("title LIKE?","%#{word}")
+      @question = Question.where("question_content LIKE?","%#{word}")
     elsif search == "partial_match"
-      @question = Question.where("title LIKE?","%#{word}%")
+      @question = Question.where("question_content LIKE?","%#{word}%")
     else
       @question = Question.all
     end

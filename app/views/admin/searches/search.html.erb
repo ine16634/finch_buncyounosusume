@@ -1,0 +1,25 @@
+<h2>検索結果 index(admin)</h2>
+
+
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+    <ul>
+      <% @users.each do |user| %>
+        <li>
+          <%= user.name %>
+          <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        <li>
+      <% end %>
+    </ul>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+     </ul>
+      <% @questions.each do |question| %>
+        <li>
+            <%= question.user.name %>      
+            <%= question.question_content %>
+            <%= link_to '削除', admin_question_path(question), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        <li>
+      <% end %>
+      </ul>
+  <% end %>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories, except: [:new, :show]
     get 'dashboards', to: 'dashboards#index'
+    get "search" => "searches#search"
+    
     resources :users, only: [:destroy] do
         member do
             get "check"
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
             patch "unwithdrawl"
         end
     end
+    resources :questions, only: [:destroy, :index]
+    
   end
 
 
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/home/about' => 'homes#about', as: "about"
     get '/home/rule' => 'homes#rule', as: "rule"
+    get "search" => "searches#search"
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

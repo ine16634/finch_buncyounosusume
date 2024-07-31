@@ -18,9 +18,18 @@ class Public::AnswersController < ApplicationController
       render "questions/show"
     end
   end
+  
+  def destroy
+    answer = Answer.find(params[:question_id])
+    answer.user_id = current_user.id
+    answer.question_id = params[:question_id]
+    answer.destroy
+    redirect_to question_path
+  end
+  
 
   private
     def answer_params
-      params.require(:answer).permit(:answer_content,:image, :star)
+      params.require(:answer).permit(:answer_content,:image)
     end
 end

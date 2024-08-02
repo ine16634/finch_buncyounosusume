@@ -10,11 +10,12 @@ class Public::AnswerCommentsController < ApplicationController
   end
   
   def destroy
-    answer_comment = AnswerComment.find(params[:answer_id])
+    answer_comment = AnswerComment.find(params[:id])
+    question_id = answer_comment.answer.question.id
     answer_comment.user_id = current_user.id
-    answer_comment.answer_id = params[:answer_id]
+    answer_comment.answer_id = params[:id]
     answer_comment.destroy
-    redirect_to question_path
+    redirect_to question_path question_id
   end
   
   

@@ -23,11 +23,12 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    get 'answers/new'
+    
     devise_for :users
     root to: 'homes#top'
     get '/home/about' => 'homes#about', as: "about"
     get '/home/rule' => 'homes#rule', as: "rule"
+
     get "search" => "searches#search"
 
 
@@ -53,6 +54,14 @@ Rails.application.routes.draw do
   # collection do
     #  post :confirm
    # end
+    get '/categories' => 'categories#index'
+    get '/categories/before' => 'categories#before' ,as: "before"
+    get '/categories/breeding' => 'categories#breeding' ,as: "breeding"
+    get '/categories/knowledge' => 'categories#knowledge' ,as: "knowledge"
+    get '/categorie/food' => 'categories#food' ,as: "food"
+    get '/categories/illness' => 'categories#illness' ,as: "illness"
+    get '/categories/others' => 'categories#others' ,as: "others"
+    
  #end
   end
 end

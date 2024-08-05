@@ -49,7 +49,7 @@ Rails.application.routes.draw do
         resources :answer_comments, only: [:create, :destroy]
        end
     end
-    #resources :answer_comments, only: [:create, :destroy]
+    resources :answer_comments, only: [:create, :destroy]
   # collection do
     #  post :confirm
    # end

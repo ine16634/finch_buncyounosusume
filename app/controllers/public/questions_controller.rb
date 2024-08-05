@@ -42,3 +42,5 @@ private
       params.require(:question).permit(:question_content,:image,:category_method)
     end
 end
+
+

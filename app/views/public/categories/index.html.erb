@@ -1,14 +1,19 @@
-<div class="question_category">
-  
-  カテゴリー検索
-  <table class="table">
-  <tbody>
-    <tr><td>
-    <%= link_to  questions_path(category_method: category_method), class: "text-secondary" %>
-    </td>                    <%# products_pathに引数としてcategory_idを渡す %>
-      <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-  </table>
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-8 col-xl-4">
+    <h1>カテゴリー一覧</h1>
+     <ol class="list-group list-group-flush list-group-numbered">
+       
+       
+       <a class="list-group-item" href="#">お迎え前</a>
+       <a class="list-group-item" href="#">飼育方法</a>
+       <a class="list-group-item" href="#">知識</a>
+       <a class="list-group-item" href="#">食・健康</a>
+       <a class="list-group-item" href="#">病気・ケガ</a>
+       <a class="list-group-item" href="#">その他</a>
+   
+    
+     </ol>
+    </div>
+  </div>
 </div>

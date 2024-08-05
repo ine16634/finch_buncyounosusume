@@ -41,7 +41,7 @@ class Admin::UsersController < ApplicationController
     #指定されたrootへのpath
   end
 
-　　#草
+
 
 
 

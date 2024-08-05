@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+
   before_action :authenticate_user!, 
-  except: [:top,:about,:rule,:index,:show,:before,:breeding,:knowledge,:food,:illness,:others],
+  except: [:top,:about,:rule,:index,:show,:before,:breeding,:knowledge,:food,:illness,:others,:search],
   unless: :admin_controller?
+
    
 
   

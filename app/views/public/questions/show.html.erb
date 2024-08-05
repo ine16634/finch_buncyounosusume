@@ -39,31 +39,55 @@
     <!-- <i class="fa-solid fa-user-gear"></i>-->
     回答
     <% end %>
-    </div> 
-  
-            <% @question.answers.each do |answer| %>
-               <%= answer.user.name %>
-               <%= answer.answer_content %>
-            　   <% if answer.user == current_user %>
-                 <%= link_to question_path(answer.question.id), method: :delete, data: {confirm: "削除しますか"}  do %>
-                  <i class="fa-solid fa-trash-can"></i>
-                  <% end %>
-             　　 <% end %>
-            　  　 <% if @question.user == current_user %>
-                  <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
-                  <%#= form_with model: answer.answer_comments.new do |f| %>
-                 <%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
-                 　   <%= f.submit "送信する" %>
+    </div>
+
+         <% @question.answers.each do |answer| %>
+          <%= answer.user.name %>
+          <%= answer.answer_content %>
+     　   <% if answer.user == current_user %>
+           <%= link_to question_answer_path(answer.id), method: :delete, data: {confirm: "削除しますか"}  do %>
+           <i class="fa-solid fa-trash-can"></i>
+           <% end %>
+       　 <% end %>
+       　 　 <% if @question.user == current_user %>
+             <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
+             <%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
+
+
+      <div id="post_raty"></div> <!-- 星を出力するセレクタ -->
+        <%# if answer_comment.id.nil? %> <!-- 新規投稿か判別 -->
+      <script>
+          var elem = document.querySelector('#post_raty');
+          var opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              scoreName: 'answer_comment[star]',
+          };
+                    raty(elem,opt);
+      </script>
+         <%# else %>
+          <%#= render "output_star", answer_comment: answer_comment %>
+        <%# end %>
+
+                <%= f.submit "送信する" %>
                <% end %>
               <% end %>
-              
+
             <% answer.answer_comments.each do |answer_comment| %>
                <%= answer_comment.user.name %>
                <%= answer_comment.created_at.strftime('%Y/%m/%d') %>
+               <div id="post_raty"></div>
+               <%= render "output_star", answer_comment: answer_comment %>
                <%= answer_comment.comment %>
+             <% if answer_comment.user == current_user %>
+               <%= link_to answer_comment_path(answer_comment.id), method: :delete, data: {confirm: "削除しますか"} do %>
+                <i class="fa-solid fa-trash-can"></i>
+               <% end %>
+             <% end %>
+
             　<% end %>
           <% end %>
-    
+
 
     </div>
   </div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :categories, except: [:new, :show]
     get 'dashboards', to: 'dashboards#index'
     get "search" => "searches#search"
-    
+
     resources :users, only: [:destroy] do
         member do
             get "check"
@@ -18,12 +18,12 @@ Rails.application.routes.draw do
         end
     end
     resources :questions, only: [:destroy, :index]
-    
+
   end
 
 
   scope module: :public do
-    
+
     devise_for :users
     root to: 'homes#top'
     get '/home/about' => 'homes#about', as: "about"
@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     get '/categorie/food' => 'categories#food' ,as: "food"
     get '/categories/illness' => 'categories#illness' ,as: "illness"
     get '/categories/others' => 'categories#others' ,as: "others"
-    
+
  #end
   end
 end

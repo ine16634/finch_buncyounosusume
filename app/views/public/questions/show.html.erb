@@ -53,6 +53,7 @@
              <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
              <%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
              
+             
       <div id="post_raty"></div> <!-- 星を出力するセレクタ -->
         <%# if answer_comment.id.nil? %> <!-- 新規投稿か判別 -->
       <script>
@@ -67,7 +68,6 @@
          <%# else %>
           <%#= render "output_star", answer_comment: answer_comment %>
         <%# end %>
-
                 <%= f.submit "送信する" %>
                <% end %>
               <% end %>

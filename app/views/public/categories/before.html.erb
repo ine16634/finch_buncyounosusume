@@ -11,7 +11,7 @@
        <tbody>
        <% @before_questions.each do |before_question| %>
          <tr>
-            <td><%=link_to before_question.question_content, question_path(question.id) %>
+            <td><%=link_to before_question.question_content, question_path(before_question.id) %>
             <%= before_question.created_at.strftime('%Y/%m/%d') %></td>
          </tr>
 

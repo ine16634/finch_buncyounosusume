@@ -18,3 +18,18 @@ class Answer < ApplicationRecord
 end
 
 #メモ：rails g model AnswerComment comment:text user_id:integer answer_id:integer
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @answer = Answer.where("answer_content LIKE?","#{word}")
+    elsif search == "forward_match"
+      @answer = Answer.where("answer_content LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @answer = Answer.where("answer_content LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @answer = Answer.where("answer_content LIKE?","%#{word}%")
+    else
+      @answer = Answer.all
+    end
+  end

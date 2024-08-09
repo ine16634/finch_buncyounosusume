@@ -5,19 +5,33 @@ class Public::CategoriesController < ApplicationController
    # @questions = Question.category
     #render  "/question/category"
   #end
-  
-  
+
+
   def index
     @questions = Question.order("created_at DESC").page(params[:page])
-    
-    @before_questions = Question.order("created_at DESC").where(category_method: "before").page(params[:page])
-    @breeding_questions = Question.order("created_at DESC").where(category_method: "breeding").page(params[:page])
-    @knowledge_questions = Question.order("created_at DESC").where(category_method: "knowledge").page(params[:page])
-    @food_questions = Question.order("created_at DESC").where(category_method: "food").page(params[:page])    
-    @illness_questions = Question.order("created_at DESC").where(category_method: "illness").page(params[:page])
-    @others_questions = Question.order("created_at DESC").where(category_method: "others").page(params[:page])  
-    
   end
-  
-  
+
+  def before
+    @before_questions = Question.order("created_at DESC").where(category_method: "before").page(params[:page])
+  end
+
+  def breeding
+    @breeding_questions = Question.order("created_at DESC").where(category_method: "breeding").page(params[:page])
+  end
+
+  def knowledge
+    @knowledge_questions = Question.order("created_at DESC").where(category_method: "knowledge").page(params[:page])
+  end
+
+  def food
+   @food_questions = Question.order("created_at DESC").where(category_method: "food").page(params[:page])
+  end
+  def illness
+    @illness_questions = Question.order("created_at DESC").where(category_method: "illness").page(params[:page])
+  end
+  def others
+   @others_questions = Question.order("created_at DESC").where(category_method: "others").page(params[:page])
+  end
+
+
 end

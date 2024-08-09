@@ -7,14 +7,17 @@
 <div>
   
   <table class="table">
-   <tbody><tr></tr>
+   <tbody>
+     <tr>
+     <%= image_tag @user.get_image_icon(50,50) %>
+     </tr>
     <tr>
-      <th>名前</th>
-     <th><%= @user.name %></th> 
+     <td>名前</td>
+     <td><%= @user.name %></td> 
     </tr>
     <tr>
-      <th>自己紹介</th>
-      <th><%= @user.introduction %></th> 
+      <td>自己紹介</td>
+      <td><%= @user.introduction %></td> 
     </tr>
     </tbody></table>
 </div>

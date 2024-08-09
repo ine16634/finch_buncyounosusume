@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @questions = @user.questions
     @answers = @user.answers
+    #@image_icons = @user.image_icons
   end
   
   def edit
@@ -18,6 +19,8 @@ class Public::UsersController < ApplicationController
        render :edit
     end
   end
+
+
 
   #enum is_valid: { '有効': true, '退会済': false }
 

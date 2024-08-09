@@ -1,0 +1,26 @@
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-8">
+    
+       <h3>カテゴリー：知識</h3>
+
+   
+     <table class="table table-hover table-inverse">
+
+ 
+       <tbody>
+       <% @knowledge_questions.each do |knowledge_question| %>
+         <tr>
+            <td><%=link_to knowledge_question.question_content, question_path(knowledge_question.id) %>
+            <%= knowledge_question.created_at.strftime('%Y/%m/%d') %></td>
+         </tr>
+
+       <% end %>
+       </tbody>
+     </table>
+    <%= paginate @knowledge_questions %>
+    
+    
+    </div>
+  </div>
+</div>

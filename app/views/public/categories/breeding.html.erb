@@ -2,7 +2,7 @@
  <div class="row">
   <div class="col-md-8">
     
-       <h3>カテゴリー：お迎え前</h3>
+       <h3>カテゴリー：飼育方法前</h3>
 
    
      <table class="table table-hover table-inverse">
@@ -11,7 +11,7 @@
        <tbody>
        <% @breeding_questions.each do |breeding_question| %>
          <tr>
-            <td><%=link_to breeding_question.question_content, question_path(question.id) %>
+            <td><%=link_to breeding_question.question_content, question_path(breeding_question.id) %>
             <%= breeding_question.created_at.strftime('%Y/%m/%d') %></td>
          </tr>
 

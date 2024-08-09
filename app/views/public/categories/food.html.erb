@@ -1,0 +1,26 @@
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-8">
+    
+       <h3>カテゴリー：食・健康</h3>
+
+   
+     <table class="table table-hover table-inverse">
+
+ 
+       <tbody>
+       <% @food_questions.each do |food_question| %>
+         <tr>
+            <td><%=link_to food_question.question_content, question_path(food_question.id) %>
+            <%= food_question.created_at.strftime('%Y/%m/%d') %></td>
+         </tr>
+
+       <% end %>
+       </tbody>
+     </table>
+    <%= paginate @food_questions %>
+    
+    
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h1>全回答一覧</h1>
+<ul>
+  <% @answers.each do |answer| %>
+    <li>
+      <%= answer.user.name %>＝<%= answer.answer_content%> 
+      <%= link_to '削除', admin_question_path(answer), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+
+    </li>
+  <% end %>
+</ul>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         end
     end
     resources :questions, only: [:destroy, :index]
+    resources :answers, only: [:destroy, :index]
 
   end
 
@@ -58,7 +59,7 @@ Rails.application.routes.draw do
     get '/categories/before' => 'categories#before' ,as: "before"
     get '/categories/breeding' => 'categories#breeding' ,as: "breeding"
     get '/categories/knowledge' => 'categories#knowledge' ,as: "knowledge"
-    get '/categorie/food' => 'categories#food' ,as: "food"
+    get '/categories/food' => 'categories#food' ,as: "food"
     get '/categories/illness' => 'categories#illness' ,as: "illness"
     get '/categories/others' => 'categories#others' ,as: "others"
 

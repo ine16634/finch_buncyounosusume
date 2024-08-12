@@ -1,12 +1,18 @@
-<div class="container px-5 px-sm-0">
- <div class="row">
-  <div class="col-md-8">
-    
-       <h1>Q&A一覧</h1>
+<style>
+  .bg02 {background: url("<%= asset_path('buncyo2.jpeg') %>") #AFB0AB no-repeat bottom right/ contain;}
+ </style>
 
+
+
+<div class="container-fluid my-5 bg02">
+ <div class="row py-5 px-3">
+  <div class="border col-md-8 bg-white">
+     <div class="border px-3 my-3 bg-light text-dark text-center">
+       <h1>Q&A一覧</h1>
+     </div>
    
      <table class="table table-hover table-inverse">
-
+  
  
        <tbody>
        <% @questions.each do |question| %>
@@ -19,8 +25,8 @@
        </tbody>
      </table>
     <%= paginate @questions %>
-    
-    
+
     </div>
+    
   </div>
 </div>

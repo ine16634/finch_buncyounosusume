@@ -1,42 +1,61 @@
+<style>
+  .bg00 {background: url("<%= asset_path('buncyo.jpeg') %>") #E5CBB2 no-repeat bottom right/ contain;}
+ </style>
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-7 px-5 px-sm-0 mx-auto">
-  <h2>User info</h2>
-<div>
+<div class="container-fluid my-5 bg00">
+<div class="row py-3 px-3">
   
-  <table class="table">
-   <tbody>
-     <tr>
-     <%= image_tag @user.get_image_icon(50,50) %>
-     </tr>
-    <tr>
-     <td>名前</td>
-     <td><%= @user.name %></td> 
-    </tr>
-    <tr>
-      <td>自己紹介</td>
-      <td><%= @user.introduction %></td> 
-    </tr>
+<div class="border col-sm-12 col-md-8 col-lg-7 px-5 px-sm-0 mx-auto bg-white text-dark ">
+    <h2>User info</h2>
+   <div class="d-flex">
+     <div class="flex-shrink-0 ">
+       <div class="d-flex justify-content-end">
+        <%= image_tag @user.get_image_icon(100,100) %>
+     </div>
+     </div>
+   <div class="flex-grow-1 ms-3 ">
+     <table class="table">
+       <tbody>
+        <tr>
+         <td>名前</td>
+         <td><%= @user.name %></td> 
+        </tr>
+        <tr>
+         <td>自己紹介</td>
+         <td><%= @user.introduction %></td> 
+        </tr>
     </tbody></table>
+   <div class="d-flex justify-content-end">
+   <div class="col-4">
+      <%= link_to  edit_user_path,class:"btn btn-outline-secondary btn-block" do %>
+        <i class="fa-solid fa-user-gear"></i>
+      <% end %>
+      <%= link_to "退会する", withdrawl_user_path(@user.id), method: :patch, data: { confirm: '本当に削除しますか？' }  %>
+      </div>
+      </div>
+   </div>
+   </div>
 </div>
-<div class="col-sm-12 col-md-8 col-lg-7 px-5 px-sm-0 mx-auto">
-    <%= link_to  edit_user_path,class:"btn btn-outline-secondary btn-block" do %>
-    <i class="fa-solid fa-user-gear"></i>
-    <% end %>
-    <%= link_to "退会する", withdrawl_user_path(@user.id), method: :patch, data: { confirm: '本当に削除しますか？' }  %>
 </div>
-
-    </div>
+ 
     
     <!-- ユーザーの投稿一覧 -->
- <div class="col-md-8 offset-md-1">
-  <h2>UsersQuestion</h2>
-
+<div class="row py-3 px-3">
+<div class="border col-md-8 mx-auto bg-white text-dark ">
+  
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="q-tab" data-bs-toggle="tab" data-bs-target="#q-tab-pane" type="button" role="tab" aria-controls="q-tab-pane" aria-selected="true">質問</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="a-tab" data-bs-toggle="tab" data-bs-target="#a-tab-pane" type="button" role="tab" aria-controls="a-tab-pane" aria-selected="false">回答</button>
+    </li>
+  </ul>
+  
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="q-tab-pane" role="tabpanel" aria-labelledby="q-tab" tabindex="0">
+  
       <table class="table table-hover table-inverse">
-
- 
        <tbody>
        <% @questions.each do |question| %>
          <tr>
@@ -47,11 +66,11 @@
        <% end %>
        </tbody>
      </table>
-     <h2>UsersAnswer</h2>
-
+  </div>
+  
+  <div class="tab-pane fade" id="a-tab-pane" role="tabpanel" aria-labelledby="a-tab" tabindex="0">
+    
       <table class="table table-hover table-inverse">
-
- 
        <tbody>
        <% @answers.each do |answer| %>
          <tr>
@@ -62,13 +81,11 @@
        <% end %>
        </tbody>
      </table> 
-     
+  </div>
+</div>
     
 
  </div>
     
-    
-    
   </div>
- 
 </div>

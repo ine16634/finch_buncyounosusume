@@ -8,18 +8,29 @@
         <li>
           <%= user.name %>
           <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        <li>
+        </li>
       <% end %>
     </ul>
-  <% else %>
+  <% elsif  @range == "Question"%>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-     </ul>
+     <ul>
       <% @questions.each do |question| %>
         <li>
             <%= question.user.name %>      
             <%= question.question_content %>
             <%= link_to '削除', admin_question_path(question), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </li>
+      <% end %>
+      </ul>
+    <% else %>
+    <!--検索対象モデルがUserとquestionではない時(= 検索対象モデルがBookの時) -->
+     <ul>
+      <% @answers.each do |answer| %>
         <li>
+            <%= answer.user.name %>      
+            <%= answer.answer_content %>
+            <%= link_to '削除', admin_answer_path(answer), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </li>
       <% end %>
       </ul>
   <% end %>

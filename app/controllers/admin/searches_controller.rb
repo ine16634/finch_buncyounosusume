@@ -6,7 +6,7 @@ class Admin::SearchesController < ApplicationController
 
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
-    elsif
+    elsif @range == "Question"
       @questions = Question.looks(params[:search], params[:word])
     else
       @answers = Answer.looks(params[:search], params[:word])

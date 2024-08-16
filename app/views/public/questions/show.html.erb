@@ -1,61 +1,88 @@
-<div class="container px-5 px-sm-0">
- <div class="row">
+<style>
+  .bg06 {background: url("<%= asset_path('buncyo6.jpeg') %>") #DEDFDA no-repeat bottom right/ contain;}
+ </style>
+
+
+
+<div class="container-fluid my-5 bg06">
+  <div class="row py-5 px-3">
   <div class="col-md-8">
 
-   <table class="table">
+<div class="question-box row py-2 px-2 bg-white">
+ <div class="col-md-12">
+   <div>
+     <div>
+      <%= image_tag @question.user.get_image_icon(50,50) %>
+      <%= link_to user_path(@question.user.id) do %>
+      <%= @question.user.name %>
+      <% end %>さん
+     </div>
+     <p class="fw-light">
+      <%= @question.created_at.strftime('%Y/%m/%d') %>
+     </p>
+   </div>
+   <div class="mb-3">
+     <%= @question.question_content %>
+   </div>
+   <div class="d-flex justify-content-end">
+    <div>
+     <%= image_tag @question.get_image %>
+    </div> 
+   </div> 
+   <div class="d-flex justify-content-end">
+    <div>
+     <% if @question.user == current_user %>
+       <%= link_to question_path(@question.id), method: :delete, data: {confirm: "削除しますか？"}  do %>
+         <i class="fa-solid fa-trash-can"></i>
+       <% end %>
+     <% end %>
+    </div>
+   </div>
+ </div>
 
-    <tbody>
-          <tr>
-           <td><%= link_to user_path(@question.user.id) do %>
-                <!-- <　%= image_tag @question.user.get_profile_image(100,100) %><br> -->
-                <%= @question.user.name %>
-               <% end %></td>
-          </tr>
-          <tr>
-           <td><!--<　%= link_to question_path(@question.id) do %>　-->
-                <%= @question.question_content %>
-               <!-- <　% end %>--></td> </tr>
-               <tr>
-              <td>
-              <%= image_tag @question.get_image %>
-              </tr>
-              <tr><td>
-               <%= @question.created_at.strftime('%Y/%m/%d') %></td>
-              </tr>
-
-              <% if @question.user == current_user %>
-            <tr><td>
-              <%= link_to question_path(@question.id), method: :delete, data: {confirm: "削除しますか？"}  do %>
-              <i class="fa-solid fa-trash-can"></i>
-              <% end %></td>
-              </tr>
-              <% end %>
-
-       </tbody>
-     </table>
-
-     <div class="row">
+ <div class="border-top col-md-12 py-3">
+     
     <%= link_to  new_question_answer_path(@question.id),class:"btn btn-outline-secondary btn-block" do %>
-    <!-- <i class="fa-solid fa-user-gear"></i>-->
     回答
     <% end %>
+    
+ </div>
+</div>
+  
+<div class="answer-box row my-2 py-2  px-2 bg-white">
+  <div class="col-12 border px-3 my-3 bg-light text-dark text-center">
+    <h3>回答一覧</h3>
+  </div>
+ <% @question.answers.each do |answer| %>
+  <div class="border-bottom answers col-md-12">
+   <div>
+    <div>
+     <%= image_tag answer.user.get_image_icon(50,50) %>
+     <%= link_to user_path(answer.user.id) do %>
+      <%= answer.user.name %>
+     <% end %>さん
     </div>
-
-         <% @question.answers.each do |answer| %>
-          <%= answer.user.name %>
-          <%= answer.answer_content %>
-     　   <% if answer.user == current_user %>
-           <%= link_to question_answer_path(answer.id), method: :delete, data: {confirm: "削除しますか"}  do %>
-           <i class="fa-solid fa-trash-can"></i>
-           <% end %>
-       　 <% end %>
-       　 　 <% if @question.user == current_user %>
-             <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
-             <%= f.text_area :comment,  placeholder: "返信文をここに入力" %>
-             
-             
+    <p class="fw-light">
+     <%= answer.created_at.strftime('%Y/%m/%d') %>
+    </p>
+   </div> 
+   <div class="mb-3">
+    <%= answer.answer_content %>
+   </div>
+   <div class="d-flex justify-content-end">
+    <div>
+   　 <% if answer.user == current_user %>
+      <%= link_to question_answer_path(answer.id), method: :delete, data: {confirm: "削除しますか"}  do %>
+       <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+     <% end %>
+    </div>
+   </div>
+     <% if @question.user == current_user %>
+      <div class="answers col-md-10 offset-2">
+      <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
+       <%= f.text_area :comment,  placeholder: "返信文をここに入力" ,class:"form-control" ,rows:"1"%>
       <div id="post_raty"></div> <!-- 星を出力するセレクタ -->
-        <%# if answer_comment.id.nil? %> <!-- 新規投稿か判別 -->
       <script>
           var elem = document.querySelector('#post_raty');
           var opt = {
@@ -65,27 +92,42 @@
           };
                     raty(elem,opt);
       </script>
-         <%# else %>
-          <%#= render "output_star", answer_comment: answer_comment %>
-        <%# end %>
-                <%= f.submit "送信する" %>
-               <% end %>
-              <% end %>
-
-            <% answer.answer_comments.each do |answer_comment| %>
-               <%= answer_comment.user.name %>
-               <%= answer_comment.created_at.strftime('%Y/%m/%d') %>
-               <div id="post_raty"></div>
-               <%= render "output_star", answer_comment: answer_comment %>
-               <%= answer_comment.comment %>
-             <% if answer_comment.user == current_user %>
-               <%= link_to answer_comment_path(answer_comment.id), method: :delete, data: {confirm: "削除しますか"} do %>
-                <i class="fa-solid fa-trash-can"></i>
-               <% end %>
-             <% end %>
-
-            　<% end %>
+       <%= f.submit "送信する" ,class:"col-2 btn btn-outline-secondary btn-block" %>
+      <% end %>
+      </div>
+     <% end %>
+   
+   <div class="answers col-md-10 offset-1">
+    <% answer.answer_comments.each do |answer_comment| %>
+    <div class="border-top mt-2">
+      <div>
+      <%= image_tag answer_comment.user.get_image_icon(50,50) %>
+      <%= link_to user_path(answer_comment.user.id) do %>
+       <%= answer_comment.user.name %>
+      <% end %>さん
+     </div>
+      <%= answer_comment.created_at.strftime('%Y/%m/%d') %>
+        <div id="post_raty"></div>
+        <%= render "output_star", answer_comment: answer_comment %>
+        <%= answer_comment.comment %>
+               
+     <div>
+       <div>
+         <% if answer_comment.user == current_user %>
+          <%= link_to answer_comment_path(answer_comment.id), method: :delete, data: {confirm: "削除しますか"} do %>
+            <i class="fa-solid fa-trash-can"></i>
           <% end %>
+         <% end %>
+        </div>
+     </div>
+     </div>          
+    <% end %>
+   </div>          　
+ </div>
+ <% end %>
+
+</div>
+
 
 
     </div>

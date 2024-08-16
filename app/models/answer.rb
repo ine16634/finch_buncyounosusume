@@ -15,7 +15,7 @@ class Answer < ApplicationRecord
     end
     image
   end
-end
+
 
 #メモ：rails g model AnswerComment comment:text user_id:integer answer_id:integer
 
@@ -33,3 +33,4 @@ end
       @answer = Answer.all
     end
   end
+end

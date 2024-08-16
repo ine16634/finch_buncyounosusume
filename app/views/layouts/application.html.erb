@@ -11,8 +11,10 @@
      <script src="https://kit.fontawesome.com/e2c9f13b1d.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
-    
+
     <style>
   header {
   background-image: url("<%= asset_path('buncyo.jpg') %>");
@@ -54,7 +56,7 @@
         </div>
       </nav>
     </header>
-    
+
     <header2 class="shadow-sm">
       <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -69,7 +71,7 @@
           <div class="justify-content">
            <ul class="navbar-nav">
             <div class="d-flex">
-              <div class="p-2"> 
+              <div class="p-2">
                <a class="nav-item nav-link active" aria-current="page" href='/questions'>Q&A一覧</a>
               </div>
               <div class="p-2">
@@ -90,13 +92,13 @@
          </nav>
         </div>
     </header2>
-    
+
     <body>
-		
+
     <%= yield %>
-    
+
     </body>
-    
+
     <footer class="bg-dark text-white pt-3 pb-3">
       <div class="container">
         <div class="row no-gutters justify-content-between">
@@ -111,7 +113,8 @@
         </div>
       </div>
     </footer>
-  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </body>
-  
+
 </html>

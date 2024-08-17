@@ -71,6 +71,11 @@
    </div>
    <div class="d-flex justify-content-end">
     <div>
+     <%= image_tag answer.get_image %>
+    </div> 
+   </div> 
+   <div class="d-flex justify-content-end">
+    <div>
    　 <% if answer.user == current_user %>
       <%= link_to question_answer_path(answer.id), method: :delete, data: {confirm: "削除しますか"}  do %>
        <i class="fa-solid fa-trash-can"></i>

@@ -82,9 +82,9 @@
       <div class="answers col-md-10 offset-2">
       <%= form_with method: :post, model: [@question, answer, AnswerComment.new] do |f| %>
        <%= f.text_area :comment,  placeholder: "返信文をここに入力" ,class:"form-control" ,rows:"1"%>
-      <div id="post_raty"></div> <!-- 星を出力するセレクタ -->
+      <div id="post_raty_<%= answer.id %>"></div> <!-- 星を出力するセレクタ -->
       <script>
-          var elem = document.querySelector('#post_raty');
+          var elem = document.querySelector('#post_raty_<%= answer.id %>');
           var opt = {
               starOn: "<%= asset_path('star-on.png') %>",
               starOff: "<%= asset_path('star-off.png') %>",

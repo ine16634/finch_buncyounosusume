@@ -20,11 +20,11 @@
 <%= form_with(model: [@question, @answer], local: true) do |f| %>
   <div class="form-group">
   <label>回答文</label>
-  <%= f.text_area :answer_content, class:"form-control book_body"%>
+  <%= f.text_area :answer_content, class:"form-control body"%>
  </div>  
  <div class="form-group">
  <label>画像</label>
-  <%= f.file_field :image, placeholder: "画像", accept: "image/*",class:"book_body"%>
+  <%= f.file_field :image, placeholder: "画像", accept: "image/*",class:"body"%>
  </div>
  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <%= f.submit '投稿',class:"btn btn-success me-md-2" %>

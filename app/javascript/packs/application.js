@@ -9,9 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import "jquery";
-import "popper.js";
-import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application";
 
 
 import Raty from "raty.js"

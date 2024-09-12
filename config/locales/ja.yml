@@ -32,21 +32,12 @@
 #en:
   #hello: "Hello world"
 
+
 ja:
   enums:
     question:
       before: "お迎え前"
-      reeding: "飼育方法"
-      knowledge: "知識"
-      food: "食・健康"
-      illness: "病気・ケガ"
-      others: "その他"
-      
-ja:
-  enums:
-    question:
-      before: "お迎え前"
-      reeding: "飼育方法"
+      breeding: "飼育方法"
       knowledge: "知識"
       food: "食・健康"
       illness: "病気・ケガ"

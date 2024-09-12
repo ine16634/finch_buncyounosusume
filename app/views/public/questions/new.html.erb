@@ -25,17 +25,17 @@
   <label>質問カテゴリー</label><br />
   <div class="mt-3 mx-3">
    <%= f.radio_button :category_method, "before" %>
-   <%= f.label :category_method_before, "お迎え前" %><br />
+   <%= f.label :category_method_before, t('enums.question.before')  %><br />
    <%= f.radio_button :category_method, "breeding" %>
-   <%= f.label :category_method_breeding, "飼育方法" %><br /> 
+   <%= f.label :category_method_breeding, t('enums.question.breeding')  %><br /> 
    <%= f.radio_button :category_method, "knowledge" %>
-   <%= f.label :category_method_knowledge, "知識" %><br />
+   <%= f.label :category_method_knowledge, t('enums.question.knowledge') %><br />
    <%= f.radio_button :category_method, "food" %>
-   <%= f.label :category_method_food, "食・健康" %><br /> 
+   <%= f.label :category_method_food, t('enums.question.food')  %><br /> 
    <%= f.radio_button :category_method, "illness" %>
-   <%= f.label :category_method_illness, "病気・ケガ" %><br /> 
+   <%= f.label :category_method_illness, t('enums.question.illness') %><br /> 
    <%= f.radio_button :category_method, "others" %>
-   <%= f.label :category_method_others, "その他" %> <br /> 
+   <%= f.label :category_method_others, t('enums.question.others')  %> <br /> 
   </div>
  </div>
  <div class="d-grid gap-2 d-md-flex justify-content-md-end">

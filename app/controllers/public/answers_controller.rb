@@ -15,7 +15,7 @@ class Public::AnswersController < ApplicationController
     else
       @question = Question.find(params[:question_id])
       #flash.now[:alert] = "失敗！"
-      render "questions/show"
+       render :new
     end
   end
   
